@@ -6,106 +6,85 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap');
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #f8fafc; }
 
-        body { font-family: ' Jakarta Sans Plus', sans-serif; }
-
-        /* Healthcare Abstract Network Background */
+        /* Healthcare Abstract Grid */
         .medical-bg {
-            background-color: #fcfdfe;
             background-image: radial-gradient(#26bba62b 1px, transparent 1px);
             background-size: 30px 30px;
-            position: relative;
         }
 
-        /* Abstract connectivity dots from the reference image */
-        .medical-bg::before {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background-image:
-                radial-gradient(circle at 10% 20%, #26bba612 2px, transparent 10px),
-                radial-gradient(circle at 80% 50%, #26bba618 4px, transparent 15px),
-                radial-gradient(circle at 40% 80%, #26bba610 3px, transparent 12px);
-            opacity: 0.6;
-            z-index: 0;
+        .doctor-illustration {
+            filter: drop-shadow(0 20px 30px rgba(38, 187, 166, 0.15));
+            transition: transform 0.4s ease;
         }
-
-        /* Floating interaction for the doctor team */
-        .doctor-team {
-            transition: transform 0.3s ease-out;
-            z-index: 10;
-            position: relative;
-        }
-        .main-card:hover .doctor-team {
-            transform: translateY(-5px) scale(1.02);
-        }
+        .doctor-illustration:hover { transform: translateY(-10px); }
     </style>
 </head>
-<body class="medical-bg flex items-center justify-center min-h-screen p-6 overflow-hidden">
+<body class="medical-bg flex items-center justify-center min-h-screen p-4 md:p-10">
 
-    <div class="main-card bg-white rounded-[48px] shadow-2xl shadow-teal-500/10 w-full max-w-6xl p-16 flex flex-col md:flex-row items-center gap-16 border border-slate-100/50 relative z-10">
+    <div class="bg-white rounded-[60px] shadow-2xl shadow-teal-900/5 w-full max-w-6xl flex flex-col md:flex-row overflow-hidden border border-slate-100">
 
-        <div class="flex-1 space-y-12">
-            <div class="space-y-4">
-                <p class="text-xl font-medium text-slate-400">Trends</p>
-                <h1 class="text-6xl font-black text-[#26bba6] tracking-tight">Healthcare<span class="text-teal-900">.</span></h1>
-                <p class="text-slate-600 leading-relaxed max-w-md">
-                    Doc.ai utilizes advanced medical engine technology to analyze reports efficiently. Welcome back to your unified medical hub.
+        <div class="flex-1 p-12 md:p-20 flex flex-col justify-between space-y-10">
+            <div>
+                <p class="text-slate-400 font-semibold tracking-widest uppercase text-xs mb-4">Trends</p>
+                <h1 class="text-6xl font-black text-[#26bba6] tracking-tight mb-6">Healthcare<span class="text-teal-900">.</span></h1>
+                <p class="text-slate-500 leading-relaxed max-w-sm text-lg">
+                    Welcome back! Experience our unified medical hub powered by Doc.ai technology.
                 </p>
             </div>
 
-            <div class="doctor-team mt-20 relative">
-                <div class="absolute -inset-10 bg-teal-50 rounded-full blur-3xl opacity-60"></div>
-                <img src="https://i.ibb.co/X8jXj7S/medical-team-friendly.png"
-                     alt="Doc.ai Medical Team"
-                     class="w-full max-w-lg mx-auto relative z-10">
+            <div class="relative py-10">
+                <div class="absolute inset-0 bg-teal-50 rounded-full blur-3xl opacity-40 transform scale-75"></div>
+                <img src="https://cdni.iconscout.com/illustration/premium/thumb/medical-team-illustration-download-in-svg-png-gif-file-formats--doctors-group-healthcare-workers-staff-hospital-pack-people-illustrations-5383060.png"
+                     alt="Medical Team"
+                     class="doctor-illustration w-full max-w-md mx-auto relative z-10">
             </div>
         </div>
 
-        <div class="w-[420px] bg-white p-12 rounded-[40px] border border-slate-100 flex flex-col h-full relative z-10">
-            <div class="mb-12">
-                <h2 class="text-4xl font-extrabold tracking-tighter text-teal-950 mb-3">Healthcare</h2>
-                <p class="text-slate-500 text-sm">Welcome back! Please login to your account.</p>
+        <div class="w-full md:w-[460px] p-12 md:p-20 bg-white flex flex-col justify-center border-l border-slate-50">
+            <div class="mb-10">
+                <h2 class="text-3xl font-extrabold text-teal-950 mb-2">Healthcare</h2>
+                <p class="text-slate-400 text-sm">Welcome back! Please login to your account.</p>
             </div>
 
-            <form action="/login" method="POST" class="space-y-6 flex-1">
-                <div class="space-y-1">
-                    <label class="text-xs font-bold text-slate-400 uppercase tracking-widest px-1">Medical ID / Email</label>
+            <form action="/login" method="POST" class="space-y-6">
+                <div>
+                    <label class="text-[10px] font-bold text-slate-400 uppercase tracking-widest block mb-2 px-1">Medical ID / Email</label>
                     <input type="email" name="email" required
-                        class="w-full bg-slate-50 rounded-2xl px-6 py-5 border border-slate-200 focus:border-[#26bba6] focus:ring-2 focus:ring-[#26bba6]/20 focus:outline-none transition-all placeholder:text-slate-400"
+                        class="w-full bg-slate-50 rounded-2xl px-6 py-4 border border-slate-100 focus:border-[#26bba6] focus:ring-4 focus:ring-[#26bba6]/10 focus:outline-none transition-all placeholder:text-slate-300"
                         placeholder="medical-id@doc.ai">
                 </div>
 
-                <div class="space-y-1 pb-4">
-                    <div class="flex justify-between items-center px-1">
-                        <label class="text-xs font-bold text-slate-400 uppercase tracking-widest">Password</label>
-                        <a href="#" class="text-xs text-slate-500 hover:text-[#26bba6] font-medium transition-colors">Forgot Password?</a>
+                <div>
+                    <div class="flex justify-between items-center mb-2 px-1">
+                        <label class="text-[10px] font-bold text-slate-400 uppercase tracking-widest block">Password</label>
+                        <a href="#" class="text-[10px] text-slate-400 hover:text-[#26bba6] font-bold">Forgot Password?</a>
                     </div>
                     <input type="password" name="password" required
-                        class="w-full bg-slate-50 rounded-2xl px-6 py-5 border border-slate-200 focus:border-[#26bba6] focus:ring-2 focus:ring-[#26bba6]/20 focus:outline-none transition-all placeholder:text-slate-400"
+                        class="w-full bg-slate-50 rounded-2xl px-6 py-4 border border-slate-100 focus:border-[#26bba6] focus:ring-4 focus:ring-[#26bba6]/10 focus:outline-none transition-all placeholder:text-slate-300"
                         placeholder="••••••••">
                 </div>
 
-                <div class="flex items-center gap-4 pt-6">
+                <div class="flex items-center gap-3 pt-4">
                     <button type="submit"
-                        class="flex-1 bg-[#26bba6] text-white font-bold py-5 rounded-2xl hover:bg-[#1f9b8a] hover:scale-[1.03] active:scale-98 transition-all shadow-lg shadow-teal-500/20 uppercase tracking-widest text-sm">
+                        class="flex-1 bg-[#26bba6] text-white font-extrabold py-4 rounded-2xl hover:bg-[#1f9b8a] hover:shadow-lg hover:shadow-teal-500/30 transition-all text-xs uppercase tracking-widest">
                         Login
                     </button>
                     <button type="button"
-                        class="flex-1 bg-white text-teal-900 font-bold py-5 rounded-2xl border-2 border-slate-200 hover:border-teal-300 hover:text-[#1f9b8a] transition-all text-sm uppercase tracking-widest">
+                        class="flex-1 bg-white text-[#26bba6] font-extrabold py-4 rounded-2xl border-2 border-slate-100 hover:border-[#26bba6] transition-all text-xs uppercase tracking-widest">
                         Sign Up
                     </button>
                 </div>
             </form>
 
-            <div class="mt-auto pt-10 text-center border-t border-slate-100">
-                <a href="#" class="text-sm text-slate-500 hover:text-[#26bba6] font-medium transition-colors">Contact us</a>
+            <div class="mt-16 text-center">
+                <a href="#" class="text-xs text-slate-400 hover:text-[#26bba6] font-semibold transition-colors">Contact us</a>
             </div>
         </div>
     </div>
 
-    <div class="absolute bottom-0 left-0 w-full h-4 bg-[#26bba6] z-0"></div>
+    <div class="fixed bottom-0 left-0 w-full h-2 bg-[#26bba6]"></div>
 
 </body>
 </html>
