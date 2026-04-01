@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <title>Doc.ai | Secure Medical Access</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap');
         body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #f8fafc; }
@@ -14,13 +13,42 @@
             background-size: 30px 30px;
         }
 
-        /* Subtle float for the whole left section */
-        .hero-float {
-            animation: float 6s ease-in-out infinite;
+        /* Pure CSS "Heartbeat" Pulse Animation */
+        .pulse-container {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
+
+        .pulse-ring {
+            position: absolute;
+            border: 2px solid #26bba6;
+            border-radius: 50%;
+            animation: pulse 3s ease-out infinite;
+            opacity: 0;
+        }
+
+        .pulse-ring:nth-child(2) { animation-delay: 1s; }
+        .pulse-ring:nth-child(3) { animation-delay: 2s; }
+
+        @keyframes pulse {
+            0% { width: 50px; height: 50px; opacity: 0.8; }
+            100% { width: 300px; height: 300px; opacity: 0; }
+        }
+
+        .doctor-emoji {
+            font-size: 80px;
+            z-index: 10;
+            filter: drop-shadow(0 10px 20px rgba(38, 187, 166, 0.3));
+            animation: float 3s ease-in-out infinite;
+        }
+
         @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-15px) scale(1.05); }
         }
     </style>
 </head>
@@ -28,7 +56,7 @@
 
     <div class="bg-white rounded-[60px] shadow-2xl shadow-teal-900/5 w-full max-w-6xl flex flex-col md:flex-row overflow-hidden border border-slate-100">
 
-        <div class="flex-1 p-12 md:p-20 flex flex-col justify-between space-y-10 hero-float">
+        <div class="flex-1 p-12 md:p-20 flex flex-col justify-between space-y-10">
             <div>
                 <p class="text-slate-400 font-semibold tracking-widest uppercase text-xs mb-4">AI Medical Engine</p>
                 <h1 class="text-6xl font-black text-[#26bba6] tracking-tight mb-6">Doc.ai<span class="text-teal-900">.</span></h1>
@@ -37,16 +65,14 @@
                 </p>
             </div>
 
-            <div class="relative py-10 flex justify-center">
-                <div class="absolute inset-0 bg-teal-50 rounded-full blur-3xl opacity-40 transform scale-90"></div>
-                <dotlottie-player
-                    src="https://lottie.host/809c9520-7215-442d-a2f0-10903823485b/6S8H6mN898.json"
-                    background="transparent"
-                    speed="1"
-                    style="width: 450px; height: 450px;"
-                    loop
-                    autoplay>
-                </dotlottie-player>
+            <div class="relative py-10 flex justify-center items-center h-80">
+                <div class="pulse-container">
+                    <div class="pulse-ring"></div>
+                    <div class="pulse-ring"></div>
+                    <div class="pulse-ring"></div>
+                    <div class="doctor-emoji">👨‍⚕️👩‍⚕️</div>
+                </div>
+                <div class="absolute inset-0 bg-teal-50 rounded-full blur-3xl opacity-40 transform scale-75"></div>
             </div>
         </div>
 
