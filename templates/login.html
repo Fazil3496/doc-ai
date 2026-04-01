@@ -2,93 +2,110 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Doc.ai | Secure Login</title>
+    <title>Doc.ai | Secure Medical Access</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
     <style>
-        /* Smooth glow transition for the lamp */
-        #lamp-icon {
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.1));
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap');
+
+        body { font-family: ' Jakarta Sans Plus', sans-serif; }
+
+        /* Healthcare Abstract Network Background */
+        .medical-bg {
+            background-color: #fcfdfe;
+            background-image: radial-gradient(#26bba62b 1px, transparent 1px);
+            background-size: 30px 30px;
+            position: relative;
         }
-        .lamp-on {
-            color: #2dd4bf !important; /* Teal 400 */
-            filter: drop-shadow(0 0 20px rgba(45, 212, 191, 0.8)) !important;
-            transform: scale(1.1);
+
+        /* Abstract connectivity dots from the reference image */
+        .medical-bg::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image:
+                radial-gradient(circle at 10% 20%, #26bba612 2px, transparent 10px),
+                radial-gradient(circle at 80% 50%, #26bba618 4px, transparent 15px),
+                radial-gradient(circle at 40% 80%, #26bba610 3px, transparent 12px);
+            opacity: 0.6;
+            z-index: 0;
+        }
+
+        /* Floating interaction for the doctor team */
+        .doctor-team {
+            transition: transform 0.3s ease-out;
+            z-index: 10;
+            position: relative;
+        }
+        .main-card:hover .doctor-team {
+            transform: translateY(-5px) scale(1.02);
         }
     </style>
 </head>
-<body class="bg-[#0f172a] text-white flex items-center justify-center min-h-screen font-sans overflow-hidden">
+<body class="medical-bg flex items-center justify-center min-h-screen p-6 overflow-hidden">
 
-    <div class="flex flex-col md:flex-row items-center gap-16">
+    <div class="main-card bg-white rounded-[48px] shadow-2xl shadow-teal-500/10 w-full max-w-6xl p-16 flex flex-col md:flex-row items-center gap-16 border border-slate-100/50 relative z-10">
 
-        <div class="text-center flex flex-col items-center">
-            <div onclick="toggleLamp()" class="cursor-pointer group relative">
-                <div class="w-1 h-20 bg-slate-700 mx-auto mb-[-5px] group-hover:bg-teal-600 transition-colors"></div>
-
-                <i data-lucide="lamp-ceiling" id="lamp-icon" class="w-32 h-32 text-slate-600 hover:text-slate-400"></i>
-
-                <p class="absolute -bottom-8 left-1/2 -translate-x-1/2 text-[10px] font-bold text-slate-500 tracking-widest opacity-0 group-hover:opacity-100 transition-opacity">TOUCH TO TOGGLE</p>
+        <div class="flex-1 space-y-12">
+            <div class="space-y-4">
+                <p class="text-xl font-medium text-slate-400">Trends</p>
+                <h1 class="text-6xl font-black text-[#26bba6] tracking-tight">Healthcare<span class="text-teal-900">.</span></h1>
+                <p class="text-slate-600 leading-relaxed max-w-md">
+                    Doc.ai utilizes advanced medical engine technology to analyze reports efficiently. Welcome back to your unified medical hub.
+                </p>
             </div>
 
-            <p id="system-status" class="text-slate-600 font-bold mt-12 tracking-[0.3em] transition-colors duration-500">SYSTEM OFFLINE</p>
+            <div class="doctor-team mt-20 relative">
+                <div class="absolute -inset-10 bg-teal-50 rounded-full blur-3xl opacity-60"></div>
+                <img src="https://i.ibb.co/X8jXj7S/medical-team-friendly.png"
+                     alt="Doc.ai Medical Team"
+                     class="w-full max-w-lg mx-auto relative z-10">
+            </div>
         </div>
 
-        <div class="bg-slate-900 p-10 rounded-[40px] border border-slate-800 shadow-2xl w-96 relative z-10">
-            <div class="mb-8">
-                <h2 class="text-3xl font-black tracking-tight mb-2">Welcome Back</h2>
-                <p class="text-slate-500 text-sm">Please sign in to access Doc.ai</p>
+        <div class="w-[420px] bg-white p-12 rounded-[40px] border border-slate-100 flex flex-col h-full relative z-10">
+            <div class="mb-12">
+                <h2 class="text-4xl font-extrabold tracking-tighter text-teal-950 mb-3">Healthcare</h2>
+                <p class="text-slate-500 text-sm">Welcome back! Please login to your account.</p>
             </div>
 
-            <form action="/login" method="POST" class="space-y-4">
-                <div>
+            <form action="/login" method="POST" class="space-y-6 flex-1">
+                <div class="space-y-1">
+                    <label class="text-xs font-bold text-slate-400 uppercase tracking-widest px-1">Medical ID / Email</label>
                     <input type="email" name="email" required
-                        class="w-full bg-slate-950 rounded-2xl px-6 py-5 border border-slate-800 focus:border-teal-500 focus:outline-none transition-all placeholder:text-slate-700"
+                        class="w-full bg-slate-50 rounded-2xl px-6 py-5 border border-slate-200 focus:border-[#26bba6] focus:ring-2 focus:ring-[#26bba6]/20 focus:outline-none transition-all placeholder:text-slate-400"
                         placeholder="medical-id@doc.ai">
                 </div>
-                <div>
+
+                <div class="space-y-1 pb-4">
+                    <div class="flex justify-between items-center px-1">
+                        <label class="text-xs font-bold text-slate-400 uppercase tracking-widest">Password</label>
+                        <a href="#" class="text-xs text-slate-500 hover:text-[#26bba6] font-medium transition-colors">Forgot Password?</a>
+                    </div>
                     <input type="password" name="password" required
-                        class="w-full bg-slate-950 rounded-2xl px-6 py-5 border border-slate-800 focus:border-teal-500 focus:outline-none transition-all placeholder:text-slate-700"
+                        class="w-full bg-slate-50 rounded-2xl px-6 py-5 border border-slate-200 focus:border-[#26bba6] focus:ring-2 focus:ring-[#26bba6]/20 focus:outline-none transition-all placeholder:text-slate-400"
                         placeholder="••••••••">
                 </div>
 
-                <button type="submit"
-                    class="w-full bg-white text-slate-950 font-black py-5 rounded-2xl hover:bg-teal-400 hover:scale-[1.02] active:scale-95 transition-all shadow-lg mt-4 uppercase tracking-widest">
-                    Enter Dashboard
-                </button>
+                <div class="flex items-center gap-4 pt-6">
+                    <button type="submit"
+                        class="flex-1 bg-[#26bba6] text-white font-bold py-5 rounded-2xl hover:bg-[#1f9b8a] hover:scale-[1.03] active:scale-98 transition-all shadow-lg shadow-teal-500/20 uppercase tracking-widest text-sm">
+                        Login
+                    </button>
+                    <button type="button"
+                        class="flex-1 bg-white text-teal-900 font-bold py-5 rounded-2xl border-2 border-slate-200 hover:border-teal-300 hover:text-[#1f9b8a] transition-all text-sm uppercase tracking-widest">
+                        Sign Up
+                    </button>
+                </div>
             </form>
 
-            <div class="mt-8 text-center">
-                <a href="#" class="text-xs text-slate-600 hover:text-teal-500 font-bold transition-colors">FORGOT CREDENTIALS?</a>
+            <div class="mt-auto pt-10 text-center border-t border-slate-100">
+                <a href="#" class="text-sm text-slate-500 hover:text-[#26bba6] font-medium transition-colors">Contact us</a>
             </div>
         </div>
     </div>
 
-    <script>
-        // Initialize Lucide icons
-        lucide.createIcons();
+    <div class="absolute bottom-0 left-0 w-full h-4 bg-[#26bba6] z-0"></div>
 
-        let isLightOn = false;
-        const lamp = document.getElementById('lamp-icon');
-        const statusText = document.getElementById('system-status');
-
-        function toggleLamp() {
-            isLightOn = !isLightOn;
-
-            if (isLightOn) {
-                // ON State
-                lamp.classList.add('lamp-on');
-                statusText.innerText = "SYSTEM ACTIVE";
-                statusText.classList.remove('text-slate-600');
-                statusText.classList.add('text-teal-500', 'animate-pulse');
-            } else {
-                // OFF State
-                lamp.classList.remove('lamp-on');
-                statusText.innerText = "SYSTEM OFFLINE";
-                statusText.classList.remove('text-teal-500', 'animate-pulse');
-                statusText.classList.add('text-slate-600');
-            }
-        }
-    </script>
 </body>
 </html>
