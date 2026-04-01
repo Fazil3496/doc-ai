@@ -8,7 +8,6 @@
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap');
         body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #0d2137; }
 
-        /* Healthcare Dot Grid Background from your image */
         .medical-bg {
             background-image: radial-gradient(#ffffff1a 1.5px, transparent 1.5px);
             background-size: 40px 40px;
@@ -16,86 +15,76 @@
 
         .main-container {
             background-color: #ffffff;
-            border-radius: 40px;
+            border-radius: 60px;
             overflow: hidden;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-        }
-
-        .doctor-illustration {
-            filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.1));
-            transition: all 0.5s ease;
-        }
-
-        .doctor-illustration:hover {
-            transform: scale(1.03);
+            box-shadow: 0 35px 70px -15px rgba(0, 0, 0, 0.6);
         }
     </style>
 </head>
-<body class="medical-bg flex items-center justify-center min-h-screen p-6 md:p-12">
+<body class="medical-bg flex items-center justify-center min-h-screen p-8">
 
     <div class="main-container w-full max-w-6xl flex flex-col md:flex-row relative">
 
-        <div class="flex-1 p-12 md:p-20 flex flex-col justify-between">
-            <div class="z-10">
-                <p class="text-slate-400 font-light text-5xl mb-2">Trends</p>
+        <div class="flex-1 p-16 md:p-24 flex flex-col justify-between">
+            <div>
+                <p class="text-slate-300 font-light text-6xl mb-2 tracking-tight">Trends</p>
                 <h1 class="text-7xl font-black text-[#26bba6] tracking-tight mb-8">Doc.ai<span class="text-teal-900">.</span></h1>
-                <p class="text-slate-500 leading-relaxed max-w-sm text-lg">
+                <p class="text-slate-400 leading-relaxed max-w-sm text-lg">
                     Experience our unified medical hub. Securely analyze medical reports with Doc.ai technology.
                 </p>
             </div>
 
-            <div class="relative mt-12">
-                <img src="https://i.ibb.co/LNx88h6/medical-team-ref.png"
-                     alt="Doc.ai Medical Team"
-                     class="doctor-illustration w-full max-w-md relative z-10">
+            <div class="mt-12">
+                <img src="{{ url_for('static', filename='images/doctors.jpg') }}"
+                     alt="Medical Team"
+                     class="w-full max-w-md drop-shadow-2xl rounded-3xl">
             </div>
         </div>
 
-        <div class="w-full md:w-[480px] p-12 md:p-16 flex items-center justify-center">
-            <div class="w-full bg-white rounded-[40px] p-10 border border-slate-100 shadow-xl relative z-10">
-                <div class="text-center mb-10">
-                    <h2 class="text-4xl font-bold text-slate-700 mb-2">Healthcare</h2>
+        <div class="w-full md:w-[500px] p-12 flex items-center justify-center bg-slate-50/50">
+            <div class="w-full bg-white rounded-[50px] p-12 shadow-2xl border border-slate-100">
+                <div class="text-center mb-12">
+                    <h2 class="text-4xl font-extrabold text-slate-800 mb-2 text-center w-full">Healthcare</h2>
                     <p class="text-slate-400 text-sm">Welcome back! Please login to your account.</p>
                 </div>
 
                 <form action="/login" method="POST" class="space-y-6">
-                    <div>
-                        <label class="text-[10px] font-bold text-slate-400 uppercase tracking-widest block mb-2">Medical ID / Email</label>
+                    <div class="space-y-2">
+                        <label class="text-[11px] font-bold text-slate-400 uppercase tracking-[0.2em] px-1">Medical ID / Email</label>
                         <input type="email" name="email" required
-                            class="w-full bg-slate-50 rounded-2xl px-6 py-4 border border-slate-100 focus:border-[#26bba6] focus:outline-none transition-all placeholder:text-slate-300"
+                            class="w-full bg-slate-100 rounded-2xl px-6 py-5 border-none focus:ring-2 focus:ring-[#26bba6]/20 focus:outline-none transition-all placeholder:text-slate-300"
                             placeholder="medical-id@doc.ai">
                     </div>
 
-                    <div>
-                        <div class="flex justify-between items-center mb-2">
-                            <label class="text-[10px] font-bold text-slate-400 uppercase tracking-widest block">Password</label>
-                            <a href="#" class="text-[10px] text-[#26bba6] font-bold">Forgot Password?</a>
+                    <div class="space-y-2">
+                        <div class="flex justify-between items-center px-1">
+                            <label class="text-[11px] font-bold text-slate-400 uppercase tracking-[0.2em]">Password</label>
+                            <a href="#" class="text-[11px] text-[#26bba6] font-bold">Forgot Password?</a>
                         </div>
                         <input type="password" name="password" required
-                            class="w-full bg-slate-50 rounded-2xl px-6 py-4 border border-slate-100 focus:border-[#26bba6] focus:outline-none transition-all placeholder:text-slate-300"
+                            class="w-full bg-slate-100 rounded-2xl px-6 py-5 border-none focus:ring-2 focus:ring-[#26bba6]/20 focus:outline-none transition-all placeholder:text-slate-300"
                             placeholder="••••••••">
                     </div>
 
-                    <div class="flex items-center gap-4 pt-4">
+                    <div class="flex items-center gap-4 pt-6">
                         <button type="submit"
-                            class="flex-1 bg-[#26bba6] text-white font-bold py-4 rounded-xl hover:bg-[#1f9b8a] transition-all uppercase tracking-widest text-sm">
+                            class="flex-1 bg-[#26bba6] text-white font-bold py-5 rounded-2xl hover:bg-[#1f9b8a] transition-all shadow-lg shadow-teal-500/20 uppercase tracking-widest">
                             Login
                         </button>
                         <button type="button"
-                            class="flex-1 bg-white text-[#26bba6] font-bold py-4 rounded-xl border border-slate-200 hover:border-[#26bba6] transition-all text-sm uppercase tracking-widest">
+                            class="flex-1 bg-white text-[#26bba6] font-bold py-5 rounded-2xl border border-slate-200 hover:border-[#26bba6] transition-all uppercase tracking-widest">
                             Sign Up
                         </button>
                     </div>
                 </form>
 
                 <div class="mt-12 text-center">
-                    <a href="#" class="text-xs text-slate-400 hover:text-[#26bba6] transition-colors uppercase font-bold tracking-tighter">Contact us</a>
+                    <a href="#" class="text-xs text-slate-400 hover:text-[#26bba6] uppercase font-black tracking-widest transition-colors">Contact us</a>
                 </div>
             </div>
         </div>
 
-        <div class="absolute bottom-0 left-0 w-full h-3 bg-[#26bba6]"></div>
+        <div class="absolute bottom-0 left-0 w-full h-4 bg-[#26bba6]"></div>
     </div>
-
 </body>
 </html>
