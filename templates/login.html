@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Doc.ai | Secure Medical Access</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap');
         body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #f8fafc; }
@@ -14,12 +14,13 @@
             background-size: 30px 30px;
         }
 
-        .icon-float {
-            animation: float 3s ease-in-out infinite;
+        /* Subtle float for the whole left section */
+        .hero-float {
+            animation: float 6s ease-in-out infinite;
         }
         @keyframes float {
             0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
+            50% { transform: translateY(-10px); }
         }
     </style>
 </head>
@@ -27,21 +28,25 @@
 
     <div class="bg-white rounded-[60px] shadow-2xl shadow-teal-900/5 w-full max-w-6xl flex flex-col md:flex-row overflow-hidden border border-slate-100">
 
-        <div class="flex-1 p-12 md:p-20 flex flex-col justify-between space-y-10">
+        <div class="flex-1 p-12 md:p-20 flex flex-col justify-between space-y-10 hero-float">
             <div>
                 <p class="text-slate-400 font-semibold tracking-widest uppercase text-xs mb-4">AI Medical Engine</p>
                 <h1 class="text-6xl font-black text-[#26bba6] tracking-tight mb-6">Doc.ai<span class="text-teal-900">.</span></h1>
                 <p class="text-slate-500 leading-relaxed max-w-sm text-lg">
-                    Experience our unified medical hub. Securely analyze reports with the power of artificial intelligence.
+                    Your intelligent healthcare companion. Securely analyze medical data with the power of Doc.ai.
                 </p>
             </div>
 
             <div class="relative py-10 flex justify-center">
-                <div class="absolute inset-0 bg-teal-50 rounded-full blur-3xl opacity-40 transform scale-75"></div>
-                <div class="icon-float relative z-10 flex gap-4">
-                    <i data-lucide="users" class="w-32 h-32 text-[#26bba6] opacity-80"></i>
-                    <i data-lucide="activity" class="w-16 h-16 text-teal-900 absolute -top-4 -right-4 animate-pulse"></i>
-                </div>
+                <div class="absolute inset-0 bg-teal-50 rounded-full blur-3xl opacity-40 transform scale-90"></div>
+                <dotlottie-player
+                    src="https://lottie.host/809c9520-7215-442d-a2f0-10903823485b/6S8H6mN898.json"
+                    background="transparent"
+                    speed="1"
+                    style="width: 450px; height: 450px;"
+                    loop
+                    autoplay>
+                </dotlottie-player>
             </div>
         </div>
 
@@ -89,8 +94,5 @@
 
     <div class="fixed bottom-0 left-0 w-full h-2 bg-[#26bba6]"></div>
 
-    <script>
-        lucide.createIcons();
-    </script>
 </body>
 </html>
