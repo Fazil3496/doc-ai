@@ -2,161 +2,126 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Doc.ai | Intelligence Hub</title>
+    <title>Doc.ai | Professional Access</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap');
-
-        :root {
-            --brand-teal: #26bba6;
-            --dark-navy: #0d2137;
-        }
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap');
 
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
-            background: var(--dark-navy);
-            margin: 0;
+            background-color: #0d2137; /* The dark navy from your screenshot */
+        }
+
+        .glass-container {
+            background: #ffffff;
+            border-radius: 40px;
+            box-shadow: 0 40px 100px rgba(0, 0, 0, 0.4);
             overflow: hidden;
-        }
-
-        /* Animated Healthcare Background */
-        .bg-mesh {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle at 10% 20%, rgba(38, 187, 166, 0.1) 0%, transparent 40%),
-                        radial-gradient(circle at 90% 80%, rgba(38, 187, 166, 0.1) 0%, transparent 40%);
-            z-index: -1;
-        }
-
-        .main-card {
-            background: rgba(255, 255, 255, 0.98);
-            backdrop-filter: blur(20px);
-            border-radius: 50px;
-            box-shadow: 0 50px 100px -20px rgba(0, 0, 0, 0.5);
             display: flex;
-            width: 90%;
+            min-height: 80vh;
+            width: 95%;
             max-width: 1200px;
-            height: 85vh;
-            border: 1px solid rgba(255, 255, 255, 0.3);
         }
 
-        /* Left Side Design */
-        .hero-section {
+        .left-panel {
             flex: 1.2;
             padding: 80px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            background: linear-gradient(135deg, #ffffff 0%, #f0f9f8 100%);
-            border-radius: 50px 0 0 50px;
-            position: relative;
+            background: white;
         }
 
-        .doctor-img {
-            width: 110%;
-            max-width: 600px;
-            filter: drop-shadow(0 30px 60px rgba(38, 187, 166, 0.3));
-            transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
-            position: absolute;
-            bottom: 40px;
-            left: 50px;
-        }
-
-        .doctor-img:hover {
-            transform: translateY(-20px) scale(1.05);
-        }
-
-        /* Form Styling */
-        .login-section {
+        .right-panel {
             flex: 0.8;
-            padding: 60px;
+            background: #f8fafc; /* Subtle grey for the form side */
             display: flex;
             align-items: center;
+            justify-content: center;
+            padding: 40px;
+            border-left: 1px solid #f1f5f9;
+        }
+
+        .login-card {
             background: white;
-            border-radius: 0 50px 50px 0;
+            padding: 50px;
+            border-radius: 35px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.05);
+            width: 100%;
+            max-width: 420px;
         }
 
-        .input-group input {
-            background: #f4f7f9;
-            transition: all 0.3s ease;
+        .doctor-hero {
+            width: 110%;
+            max-width: 550px;
+            filter: drop-shadow(0 20px 40px rgba(0,0,0,0.1));
+            margin-left: -20px;
+            transition: transform 0.5s ease;
         }
 
-        .input-group input:focus {
-            background: white;
-            box-shadow: 0 0 0 4px rgba(38, 187, 166, 0.1);
-            border-color: var(--brand-teal);
-        }
-
-        .btn-primary {
-            background: var(--brand-teal);
-            box-shadow: 0 10px 30px rgba(38, 187, 166, 0.4);
+        .doctor-hero:hover {
+            transform: translateY(-10px);
         }
     </style>
 </head>
 <body class="flex items-center justify-center min-h-screen">
-    <div class="bg-mesh"></div>
 
-    <div class="main-card overflow-hidden">
-
-        <div class="hero-section">
-            <div class="relative z-10">
-                <div class="flex items-center gap-2 mb-6">
-                    <span class="h-[2px] w-12 bg-slate-300"></span>
-                    <p class="text-slate-400 font-bold uppercase tracking-[0.4em] text-[10px]">Doc.ai Intelligence</p>
-                </div>
-                <h1 class="text-7xl font-black text-slate-800 tracking-tighter mb-4 leading-none">
-                    Trends<br>
-                    <span class="text-[#26bba6]">Healthcare.</span>
-                </h1>
-                <p class="text-slate-500 text-lg max-w-sm font-medium mt-6">
-                    Unified medical analysis powered by advanced neural engines.
+    <div class="glass-container">
+        <div class="left-panel">
+            <div>
+                <p class="text-slate-300 text-5xl font-light mb-2">Trends</p>
+                <h1 class="text-7xl font-extrabold text-[#26bba6] tracking-tighter mb-8">Healthcare<span class="text-teal-900">.</span></h1>
+                <p class="text-slate-400 text-lg max-w-sm leading-relaxed">
+                    Welcome back! Access your unified medical dashboard powered by Doc.ai technology.
                 </p>
             </div>
 
-            <img src="{{ url_for('static', filename='images/doctors.jpg') }}"
-                 class="doctor-img" alt="Medical Team">
+            <div class="mt-10">
+                <img src="{{ url_for('static', filename='images/doctors.jpg') }}"
+                     alt="Medical Team"
+                     class="doctor-hero">
+            </div>
         </div>
 
-        <div class="login-section">
-            <div class="w-full max-w-md mx-auto">
-                <div class="mb-12">
-                    <h2 class="text-4xl font-extrabold text-slate-800 tracking-tight">Welcome</h2>
-                    <p class="text-slate-400 mt-2">Sign in to your medical dashboard</p>
+        <div class="right-panel">
+            <div class="login-card">
+                <div class="mb-10 text-center">
+                    <h2 class="text-3xl font-black text-slate-800 mb-2">Healthcare</h2>
+                    <p class="text-slate-400 text-xs font-bold uppercase tracking-widest">Login to your account</p>
                 </div>
 
-                <form action="/login" method="POST" class="space-y-6">
-                    <div class="input-group">
-                        <label class="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2 ml-1">Identity Access</label>
+                <form action="/login" method="POST" class="space-y-5">
+                    <div>
+                        <label class="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-2 block ml-1">Medical ID / Email</label>
                         <input type="email" name="email" required
-                            class="w-full rounded-2xl px-6 py-5 border-2 border-transparent outline-none placeholder:text-slate-300"
+                            class="w-full bg-slate-50 rounded-2xl px-6 py-5 border-2 border-transparent focus:border-[#26bba6] focus:bg-white outline-none transition-all placeholder:text-slate-300"
                             placeholder="medical-id@doc.ai">
                     </div>
 
-                    <div class="input-group">
-                        <div class="flex justify-between mb-2 ml-1">
-                            <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest">Credentials</label>
+                    <div>
+                        <div class="flex justify-between items-center mb-2 ml-1">
+                            <label class="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">Password</label>
                             <a href="#" class="text-[10px] text-[#26bba6] font-bold">Forgot?</a>
                         </div>
                         <input type="password" name="password" required
-                            class="w-full rounded-2xl px-6 py-5 border-2 border-transparent outline-none placeholder:text-slate-300"
+                            class="w-full bg-slate-50 rounded-2xl px-6 py-5 border-2 border-transparent focus:border-[#26bba6] focus:bg-white outline-none transition-all placeholder:text-slate-300"
                             placeholder="••••••••">
                     </div>
 
-                    <div class="flex gap-4 pt-8">
+                    <div class="flex gap-3 pt-6">
                         <button type="submit"
-                            class="btn-primary flex-[1.5] text-white font-black py-5 rounded-2xl hover:scale-105 active:scale-95 transition-all uppercase tracking-widest text-sm">
+                            class="flex-[1.5] bg-[#26bba6] text-white font-black py-5 rounded-2xl shadow-lg shadow-teal-500/30 hover:scale-[1.02] transition-all uppercase tracking-widest text-xs">
                             Login
                         </button>
                         <button type="button"
-                            class="flex-1 bg-white text-slate-800 border-2 border-slate-100 font-bold py-5 rounded-2xl hover:border-[#26bba6] transition-all uppercase tracking-widest text-[10px]">
+                            class="flex-1 bg-white text-slate-400 border-2 border-slate-100 font-bold py-5 rounded-2xl hover:border-[#26bba6] hover:text-[#26bba6] transition-all text-[10px] uppercase tracking-widest">
                             Sign Up
                         </button>
                     </div>
                 </form>
 
-                <div class="mt-16 pt-8 border-t border-slate-50 flex justify-between items-center text-[10px] font-black text-slate-300 tracking-widest">
-                    <span>V 1.0.4</span>
-                    <a href="#" class="hover:text-[#26bba6] transition-colors">SUPPORT CENTER</a>
+                <div class="mt-12 text-center">
+                    <p class="text-[10px] text-slate-300 font-bold tracking-widest uppercase cursor-pointer hover:text-[#26bba6]">Contact Support</p>
                 </div>
             </div>
         </div>
