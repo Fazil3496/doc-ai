@@ -2,89 +2,167 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Doc.ai | Secure Medical Access</title>
+    <title>Doc.ai | Intelligence Hub</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap');
-        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #0d2137; }
 
-        .medical-bg {
-            background-image: radial-gradient(#ffffff1a 1.5px, transparent 1.5px);
-            background-size: 40px 40px;
+        :root {
+            --brand-teal: #26bba6;
+            --dark-navy: #0d2137;
         }
 
-        .main-container {
-            background-color: #ffffff;
-            border-radius: 60px;
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: var(--dark-navy);
+            margin: 0;
             overflow: hidden;
-            box-shadow: 0 35px 70px -15px rgba(0, 0, 0, 0.6);
+        }
+
+        /* Animated Healthcare Background */
+        .bg-mesh {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at 10% 20%, rgba(38, 187, 166, 0.1) 0%, transparent 40%),
+                        radial-gradient(circle at 90% 80%, rgba(38, 187, 166, 0.1) 0%, transparent 40%);
+            z-index: -1;
+        }
+
+        .main-card {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(20px);
+            border-radius: 50px;
+            box-shadow: 0 50px 100px -20px rgba(0, 0, 0, 0.5);
+            display: flex;
+            width: 90%;
+            max-width: 1200px;
+            height: 85vh;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        /* Left Side Design */
+        .hero-section {
+            flex: 1.2;
+            padding: 80px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            background: linear-gradient(135deg, #ffffff 0%, #f0f9f8 100%);
+            border-radius: 50px 0 0 50px;
+            position: relative;
+        }
+
+        .doctor-img {
+            width: 110%;
+            max-width: 600px;
+            filter: drop-shadow(0 30px 60px rgba(38, 187, 166, 0.3));
+            transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: absolute;
+            bottom: 40px;
+            left: 50px;
+        }
+
+        .doctor-img:hover {
+            transform: translateY(-20px) scale(1.05);
+        }
+
+        /* Form Styling */
+        .login-section {
+            flex: 0.8;
+            padding: 60px;
+            display: flex;
+            align-items: center;
+            background: white;
+            border-radius: 0 50px 50px 0;
+        }
+
+        .input-group input {
+            background: #f4f7f9;
+            transition: all 0.3s ease;
+        }
+
+        .input-group input:focus {
+            background: white;
+            box-shadow: 0 0 0 4px rgba(38, 187, 166, 0.1);
+            border-color: var(--brand-teal);
+        }
+
+        .btn-primary {
+            background: var(--brand-teal);
+            box-shadow: 0 10px 30px rgba(38, 187, 166, 0.4);
         }
     </style>
 </head>
-<body class="medical-bg flex items-center justify-center min-h-screen p-8">
+<body class="flex items-center justify-center min-h-screen">
+    <div class="bg-mesh"></div>
 
-    <div class="main-container w-full max-w-6xl flex flex-col md:flex-row relative">
+    <div class="main-card overflow-hidden">
 
-        <div class="flex-1 p-16 md:p-24 flex flex-col justify-between">
-            <div>
-                <p class="text-slate-300 font-light text-6xl mb-2 tracking-tight">Trends</p>
-                <h1 class="text-7xl font-black text-[#26bba6] tracking-tight mb-8">Doc.ai<span class="text-teal-900">.</span></h1>
-                <p class="text-slate-400 leading-relaxed max-w-sm text-lg">
-                    Experience our unified medical hub. Securely analyze medical reports with Doc.ai technology.
+        <div class="hero-section">
+            <div class="relative z-10">
+                <div class="flex items-center gap-2 mb-6">
+                    <span class="h-[2px] w-12 bg-slate-300"></span>
+                    <p class="text-slate-400 font-bold uppercase tracking-[0.4em] text-[10px]">Doc.ai Intelligence</p>
+                </div>
+                <h1 class="text-7xl font-black text-slate-800 tracking-tighter mb-4 leading-none">
+                    Trends<br>
+                    <span class="text-[#26bba6]">Healthcare.</span>
+                </h1>
+                <p class="text-slate-500 text-lg max-w-sm font-medium mt-6">
+                    Unified medical analysis powered by advanced neural engines.
                 </p>
             </div>
 
-            <div class="mt-12">
-                <img src="{{ url_for('static', filename='images/doctors.jpg') }}"
-                     alt="Medical Team"
-                     class="w-full max-w-md drop-shadow-2xl rounded-3xl">
-            </div>
+            <img src="{{ url_for('static', filename='images/doctors.jpg') }}"
+                 class="doctor-img" alt="Medical Team">
         </div>
 
-        <div class="w-full md:w-[500px] p-12 flex items-center justify-center bg-slate-50/50">
-            <div class="w-full bg-white rounded-[50px] p-12 shadow-2xl border border-slate-100">
-                <div class="text-center mb-12">
-                    <h2 class="text-4xl font-extrabold text-slate-800 mb-2 text-center w-full">Healthcare</h2>
-                    <p class="text-slate-400 text-sm">Welcome back! Please login to your account.</p>
+        <div class="login-section">
+            <div class="w-full max-w-md mx-auto">
+                <div class="mb-12">
+                    <h2 class="text-4xl font-extrabold text-slate-800 tracking-tight">Welcome</h2>
+                    <p class="text-slate-400 mt-2">Sign in to your medical dashboard</p>
                 </div>
 
                 <form action="/login" method="POST" class="space-y-6">
-                    <div class="space-y-2">
-                        <label class="text-[11px] font-bold text-slate-400 uppercase tracking-[0.2em] px-1">Medical ID / Email</label>
+                    <div class="input-group">
+                        <label class="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2 ml-1">Identity Access</label>
                         <input type="email" name="email" required
-                            class="w-full bg-slate-100 rounded-2xl px-6 py-5 border-none focus:ring-2 focus:ring-[#26bba6]/20 focus:outline-none transition-all placeholder:text-slate-300"
+                            class="w-full rounded-2xl px-6 py-5 border-2 border-transparent outline-none placeholder:text-slate-300"
                             placeholder="medical-id@doc.ai">
                     </div>
 
-                    <div class="space-y-2">
-                        <div class="flex justify-between items-center px-1">
-                            <label class="text-[11px] font-bold text-slate-400 uppercase tracking-[0.2em]">Password</label>
-                            <a href="#" class="text-[11px] text-[#26bba6] font-bold">Forgot Password?</a>
+                    <div class="input-group">
+                        <div class="flex justify-between mb-2 ml-1">
+                            <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest">Credentials</label>
+                            <a href="#" class="text-[10px] text-[#26bba6] font-bold">Forgot?</a>
                         </div>
                         <input type="password" name="password" required
-                            class="w-full bg-slate-100 rounded-2xl px-6 py-5 border-none focus:ring-2 focus:ring-[#26bba6]/20 focus:outline-none transition-all placeholder:text-slate-300"
+                            class="w-full rounded-2xl px-6 py-5 border-2 border-transparent outline-none placeholder:text-slate-300"
                             placeholder="••••••••">
                     </div>
 
-                    <div class="flex items-center gap-4 pt-6">
+                    <div class="flex gap-4 pt-8">
                         <button type="submit"
-                            class="flex-1 bg-[#26bba6] text-white font-bold py-5 rounded-2xl hover:bg-[#1f9b8a] transition-all shadow-lg shadow-teal-500/20 uppercase tracking-widest">
+                            class="btn-primary flex-[1.5] text-white font-black py-5 rounded-2xl hover:scale-105 active:scale-95 transition-all uppercase tracking-widest text-sm">
                             Login
                         </button>
                         <button type="button"
-                            class="flex-1 bg-white text-[#26bba6] font-bold py-5 rounded-2xl border border-slate-200 hover:border-[#26bba6] transition-all uppercase tracking-widest">
+                            class="flex-1 bg-white text-slate-800 border-2 border-slate-100 font-bold py-5 rounded-2xl hover:border-[#26bba6] transition-all uppercase tracking-widest text-[10px]">
                             Sign Up
                         </button>
                     </div>
                 </form>
 
-                <div class="mt-12 text-center">
-                    <a href="#" class="text-xs text-slate-400 hover:text-[#26bba6] uppercase font-black tracking-widest transition-colors">Contact us</a>
+                <div class="mt-16 pt-8 border-t border-slate-50 flex justify-between items-center text-[10px] font-black text-slate-300 tracking-widest">
+                    <span>V 1.0.4</span>
+                    <a href="#" class="hover:text-[#26bba6] transition-colors">SUPPORT CENTER</a>
                 </div>
             </div>
         </div>
-
-        <div class="absolute bottom-0 left-0 w-full h-4 bg-[#26bba6]"></div>
     </div>
+
+    <div class="fixed bottom-0 left-0 w-full h-3 bg-[#26bba6]"></div>
+
 </body>
 </html>
