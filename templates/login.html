@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Doc.ai | Secure Access</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Doc.ai | Secure Access</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap');
@@ -18,18 +18,31 @@
             box-shadow: 0 40px 100px rgba(0, 0, 0, 0.4);
             overflow: hidden;
             display: flex;
-            min-height: 80vh;
+            /* Mobile: Stack vertically | Desktop: Side-by-side */
+            flex-direction: column;
             width: 95%;
-            max-width: 1200px;
+            margin: 20px auto;
+        }
+
+        @media (min-width: 768px) {
+            .glass-container {
+                flex-direction: row;
+                height: 85vh;
+                max-width: 1200px;
+            }
         }
 
         .left-panel {
             flex: 1.2;
-            padding: 80px;
+            padding: 40px; /* Reduced for mobile */
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             background: white;
+        }
+
+        @media (min-width: 768px) {
+            .left-panel { padding: 80px; }
         }
 
         .right-panel {
@@ -38,39 +51,43 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 40px;
-            border-left: 1px solid #f1f5f9;
+            padding: 30px;
+            border-top: 1px solid #f1f5f9;
+        }
+
+        @media (min-width: 768px) {
+            .right-panel { border-top: none; border-left: 1px solid #f1f5f9; padding: 40px; }
         }
 
         .login-card {
             background: white;
-            padding: 50px;
+            padding: 30px;
             border-radius: 35px;
             box-shadow: 0 20px 50px rgba(0,0,0,0.05);
             width: 100%;
-            max-width: 420px;
         }
 
         .doctor-hero {
-            width: 110%;
-            max-width: 550px;
+            width: 100%;
+            max-width: 500px;
             filter: drop-shadow(0 20px 40px rgba(0,0,0,0.1));
-            margin-left: -20px;
+            margin: 20px auto 0;
+            display: block;
         }
     </style>
 </head>
 <body class="flex items-center justify-center min-h-screen">
 
     <div class="glass-container">
-        <div class="left-panel">
+        <div class="left-panel text-center md:text-left">
             <div>
-                <h1 class="text-7xl font-extrabold text-[#26bba6] tracking-tighter mb-8 mt-10">Doc.ai<span class="text-teal-900">.</span></h1>
-                <p class="text-slate-400 text-lg max-w-sm leading-relaxed">
+                <h1 class="text-5xl md:text-7xl font-extrabold text-[#26bba6] tracking-tighter mb-4 md:mb-8 mt-4 md:mt-10">Doc.ai<span class="text-teal-900">.</span></h1>
+                <p class="text-slate-400 text-sm md:text-lg max-w-sm mx-auto md:mx-0 leading-relaxed">
                     Welcome! Access your unified medical dashboard powered by Doc.ai technology.
                 </p>
             </div>
 
-            <div class="mt-10">
+            <div class="mt-6 md:mt-10">
                 <img src="{{ url_for('static', filename='images/doctors.jpg') }}"
                      alt="Medical Team"
                      class="doctor-hero">
@@ -79,49 +96,45 @@
 
         <div class="right-panel">
             <div class="login-card">
-                <div class="mb-10 text-center">
-                    <h2 class="text-4xl font-black text-slate-800 mb-2">Doc.ai</h2>
-                    <p class="text-slate-400 text-xs font-bold uppercase tracking-widest">Login to your account</p>
+                <div class="mb-8 text-center">
+                    <h2 class="text-3xl font-black text-slate-800 mb-1">Doc.ai</h2>
+                    <p class="text-slate-400 text-[10px] font-bold uppercase tracking-widest">Login to your account</p>
                 </div>
 
-                <form action="/login" method="POST" class="space-y-5">
+                <form action="/login" method="POST" class="space-y-4">
                     <div>
-                        <label class="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-2 block ml-1">Medical ID / Email</label>
+                        <label class="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-1 block ml-1">Medical ID / Email</label>
                         <input type="email" name="email" required
-                            class="w-full bg-slate-50 rounded-2xl px-6 py-5 border-2 border-transparent focus:border-[#26bba6] focus:bg-white outline-none transition-all placeholder:text-slate-300"
+                            class="w-full bg-slate-50 rounded-xl px-4 py-4 border-2 border-transparent focus:border-[#26bba6] outline-none transition-all"
                             placeholder="medical-id@doc.ai">
                     </div>
 
                     <div>
-                        <div class="flex justify-between items-center mb-2 ml-1">
+                        <div class="flex justify-between items-center mb-1 ml-1">
                             <label class="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">Password</label>
                             <a href="#" class="text-[10px] text-[#26bba6] font-bold">Forgot?</a>
                         </div>
                         <input type="password" name="password" required
-                            class="w-full bg-slate-50 rounded-2xl px-6 py-5 border-2 border-transparent focus:border-[#26bba6] focus:bg-white outline-none transition-all placeholder:text-slate-300"
+                            class="w-full bg-slate-50 rounded-xl px-4 py-4 border-2 border-transparent focus:border-[#26bba6] outline-none transition-all"
                             placeholder="••••••••">
                     </div>
 
-                    <div class="flex gap-3 pt-6">
+                    <div class="flex flex-col md:flex-row gap-3 pt-4">
                         <button type="submit"
-                            class="flex-[1.5] bg-[#26bba6] text-white font-black py-5 rounded-2xl shadow-lg shadow-teal-500/30 hover:scale-[1.02] transition-all uppercase tracking-widest text-xs">
+                            class="w-full md:flex-[1.5] bg-[#26bba6] text-white font-black py-4 rounded-xl shadow-lg uppercase tracking-widest text-xs">
                             Login
                         </button>
                         <button type="button"
-                            class="flex-1 bg-white text-slate-400 border-2 border-slate-100 font-bold py-5 rounded-2xl hover:border-[#26bba6] hover:text-[#26bba6] transition-all text-[10px] uppercase tracking-widest">
+                            class="w-full md:flex-1 bg-white text-slate-400 border-2 border-slate-100 font-bold py-4 rounded-xl text-[10px] uppercase tracking-widest">
                             Sign Up
                         </button>
                     </div>
                 </form>
-
-                <div class="mt-12 text-center">
-                    <p class="text-[10px] text-slate-300 font-bold tracking-widest uppercase cursor-pointer hover:text-[#26bba6]">Contact Support</p>
-                </div>
             </div>
         </div>
     </div>
 
-    <div class="fixed bottom-0 left-0 w-full h-3 bg-[#26bba6]"></div>
+    <div class="fixed bottom-0 left-0 w-full h-2 bg-[#26bba6]"></div>
 
 </body>
 </html>
